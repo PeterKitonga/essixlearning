@@ -51,3 +51,17 @@ app.comments_for_post = function (post, comments) {
 };
 
 console.log('Result of comments for post (' + app.post.id + ') is: ' + JSON.stringify(app.comments_for_post(app.post, app.comments)));
+
+app.numbers = [10, 20, 30];
+
+app.reject = function(array, iteratorFunction) {
+    return array.filter(function(item) {
+        return !iteratorFunction(item);
+    });
+};
+
+app.rejected_numbers = app.reject(app.numbers, function(number) {
+    return number === 20;
+});
+
+console.log('Result of rejected numbers: ' + JSON.stringify(app.rejected_numbers));
