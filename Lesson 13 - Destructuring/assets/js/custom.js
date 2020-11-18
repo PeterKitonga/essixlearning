@@ -114,3 +114,32 @@ let graph = app.points.map(( [ x, y ] ) => {
 });
 
 console.log(`Graph data coordinates are: ${JSON.stringify(graph)}`);
+
+const numbers = [1, 2, 3];
+
+/*
+* In this example we want to double every element in the array via
+* a recursive function
+*/
+function double(numbers) {
+    // we first fetch the first element in the array and the rest of the elements as well
+    const [ first_number, ...rest ] = numbers;
+    // get the length of the array passed
+    const { length } = numbers;
+
+    // check if the recursion has gone beyond the bound of the array
+    if (length > 0) {
+        /*
+        * if still within the bounds of the array, double the first element
+        * and repeat the process
+        */
+        return [ first_number * 2, ...double(rest) ];
+    } else {
+        // otherwise if out of bounds return the default numbers
+        return numbers;
+    }
+}
+
+let result = double(numbers);
+
+console.log(`The result of double each element in array ${JSON.stringify(numbers)} is ${JSON.stringify(result)}`);
